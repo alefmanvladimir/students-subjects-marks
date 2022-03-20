@@ -13,7 +13,10 @@ public interface StudentService {
     List<StudentSubjectMark> getMarksStudentSubject(String name, String subject);
     List<String> getBestStudents(); // returns names of students having average mark greater than average mark of all students
     List<String> getTopStudents(int nStudenst);
-    List<String> getTopBestStudentsSubject(int nStudents, String subject);
+    List<Student> getTopBestStudentsSubject(int nStudents, String subject);
     List<StudentSubjectMark> getMarksOfWorstStudents(int nStudents);
     List<IntervalMarks> marksDistribution(int interval);
+    List<String> jpqlQuery(String jpql);
+    List<String> nativeQuery(String query);
+    List<Student> removesStudents(int avgMark, int nMarks);
 }
