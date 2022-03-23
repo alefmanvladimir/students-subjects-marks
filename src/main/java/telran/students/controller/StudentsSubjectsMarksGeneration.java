@@ -14,9 +14,11 @@ import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
-//@Component
+@Component
 public class StudentsSubjectsMarksGeneration {
     static Logger LOG = LoggerFactory.getLogger("generation");
+    @Value("${app.generation.create: false}")
+    boolean needCreateBD;
     @Value("${app.generation.amount: 100}")
     int nMarks;
     @Autowired
@@ -30,10 +32,12 @@ public class StudentsSubjectsMarksGeneration {
             "Spring Data", "Spring Security", "Spring Cloud", "CSS", "HTML", "JS", "React", "Material-UI"};
     @PostConstruct
     void createDB(){
-        addStudents();
-        addSubjects();
-        addMarks();
-        LOG.info("created {} marks in DB", nMarks);
+        if(needCreateBD){
+            addStudents();
+            addSubjects();
+            addMarks();
+            LOG.info("created {} marks in DB", nMarks);
+        }
     }
 
     private int getRandomNumber(int min, int max){
