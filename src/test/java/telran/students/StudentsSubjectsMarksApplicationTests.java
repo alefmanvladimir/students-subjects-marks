@@ -11,6 +11,7 @@ import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import telran.students.dto.Mark;
@@ -25,8 +26,9 @@ class StSum{
 }
 @SpringBootTest
 @AutoConfigureMockMvc
-@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
+//@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestPropertySource(properties = "spring.mongodb.embedded.version=4.0.2")
 class StudentsSubjectsMarksApplicationTests {
     ObjectMapper mapper = new ObjectMapper();
 
